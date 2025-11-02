@@ -1,9 +1,10 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth import get_user_model
-from .models import Chat, Message
-from .serializers import RegisterSerializer, ChatSerializer, MessageSerializer
+from .models import Chat, Message, Subscription, EsimOrder, Consultant
+from .serializers import RegisterSerializer, ChatSerializer, MessageSerializer, SubscriptionSerializer, \
+    EsimOrderSerializer, ConsultantSerializer
 
 User = get_user_model()
 
@@ -46,4 +47,19 @@ class MessageListCreateView(APIView):
         )
         return Response(MessageSerializer(message).data)
 
+class SubscriptionViewSet(viewsets.ModelViewSet):
+    queryset = Subscription.objects.all()
+    serializer_class = SubscriptionSerializer
+    permission_classes = [permissions.AllowAny]  # later can be IsAuthenticated
 
+
+class EsimOrderViewSet(viewsets.ModelViewSet):
+    queryset = EsimOrder.objects.all()
+    serializer_class = EsimOrderSerializer
+    permission_classes = [permissions.AllowAny]
+
+
+class ConsultantViewSet(viewsets.ModelViewSet):
+    queryset = Consultant.objects.all()
+    serializer_class = ConsultantSerializer
+    permission_classes = [permissions.AllowAny]

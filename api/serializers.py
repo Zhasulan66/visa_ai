@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from .models import Chat, Message
+from .models import Chat, Message, Subscription, EsimOrder, Consultant
 
 User = get_user_model()
 
@@ -36,3 +36,20 @@ class ChatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chat
         fields = ['id', 'type', 'metadata', 'created_at', 'messages']
+
+class SubscriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subscription
+        fields = '__all__'
+
+
+class EsimOrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EsimOrder
+        fields = '__all__'
+
+
+class ConsultantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Consultant
+        fields = '__all__'
