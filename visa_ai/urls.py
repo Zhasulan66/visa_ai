@@ -27,13 +27,13 @@ schema_view = get_schema_view(
         title="Visa AI API",
         default_version='v1',
         description="API documentation for Visa AI backend",
-        terms_of_service="https://www.google.com/policies/terms/",
+        #terms_of_service="https://www.google.com/policies/terms/",
         contact=openapi.Contact(email="support@visaai.com"),
-        license=openapi.License(name="BSD License"),
+        #license=openapi.License(name="BSD License"),
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),
-    authentication_classes=[],  # no forced JWT
+    #authentication_classes=[],  # no forced JWT
 )
 
 urlpatterns = [
