@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, Chat, Subscription, EsimOrder, Consultant
+from .models import User, Chat, Subscription, EsimOrder, Consultant, Message
 
 
 @admin.register(User)
@@ -34,3 +34,10 @@ class EsimOrderAdmin(admin.ModelAdmin):
 class ConsultantAdmin(admin.ModelAdmin):
     list_display = ("id", "name")
     filter_horizontal = ("assigned_users",)
+
+
+@admin.register(Message)
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ("id", "chat", "sender", "content", "created_at")
+    search_fields = ("chat__user__username", "sender", "content")
+    list_filter = ("sender",)
