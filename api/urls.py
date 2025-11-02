@@ -6,9 +6,9 @@ from . import views
 from .views import SubscriptionViewSet, EsimOrderViewSet, ConsultantViewSet
 
 router = DefaultRouter()
-router.register(r'subscriptions', SubscriptionViewSet)
-router.register(r'esim-orders', EsimOrderViewSet)
-router.register(r'consultants', ConsultantViewSet)
+router.register("consultants", ConsultantViewSet)
+router.register("subscriptions", SubscriptionViewSet)
+router.register("esim-orders", EsimOrderViewSet)
 
 urlpatterns = [
     path('register/', views.RegisterView.as_view(), name='register'),
